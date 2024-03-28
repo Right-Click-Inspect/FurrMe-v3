@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600&display=swap");
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    scroll-behavior: smooth;
+    font-family: "Poppins", sans-serif;
+    transition: 0.2s;
+}
+
+:root {
+    --mainColor: #f2e6d6;
+    --primaryTextColor: #474747;
+}
+
+.navbar {
+    background-color: var(--mainColor);
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    justify-content: space-around;
+    padding: 0 45px;
+    position: fixed;
+    z-index: 1000;
+}
+
+.logo {
+    height: 65px;
+    width: auto;
+}
+
+.navigations {
+    display: flex;
+}
+
+.navbar-logo {
+    color: var(--primaryTextColor);
+    font-weight: 600;
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-login {
+    background: transparent;
+    font-size: 1.1rem;
+    padding: 5px 40px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-login:hover {
+    border-color: #9c784a;
+    transform: scale(1.05);
+}
+
+.mobile-link {
+    display: none;
+}
+
+.nav-menu {
+    display: flex;
+    padding: 0 10px;
+    align-items: center;
+    gap: 1.5rem;
+    width: 50vw;
+    justify-content: space-evenly;
+}
+
+.nav-links {
+    color: var(--primaryTextColor);
+    padding: 0.6rem 1rem;
+}
+
+.menu-icon {
+    visibility: hidden;
+}
+
+.nav-item:hover {
+    border-bottom: 1px solid #9c784a;
+    transition: all 0.5s ease;
+}
+
+@media screen and (max-width: 960px) {
+    .menu-icon {
+        visibility: visible;
+        position: absolute;
+        top: 1.8rem;
+        right: 1.5rem;
+    }
+
+    .navbar-logo {
+        position: absolute;
+        top: 0.5rem;
+        left: 1.5rem;
+    }
+
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 40px;
+        font-size: 1.5rem;
+        gap: 2rem;
+        width: 100%;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        top: 80px;
+        left: -100%;
+        transition: all 0.5s ease;
+        background-color: var(--mainColor);
+        justify-content: flex-start;
+    }
+
+    .mobile-link {
+        display: block;
+        text-align: center;
+        padding: 0.5rem 5rem;
+        border-radius: 5px;
+        background: var(--primaryTextColor);
+        color: var(--mainColor);
+    }
+
+    .nav-menu.active {
+        left: 0;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 1;
+        height: 100vh;
+    }
+
+    .btn-login {
+        display: none;
+    }
+
+    .nav-links:hover {
+        background-color: #9c784a;
+    }
+}
