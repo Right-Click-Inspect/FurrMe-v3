@@ -34,7 +34,7 @@ function Signup() {
                         />
                         <input
                             id="email"
-                            type="text"
+                            type="email"
                             className="signup-email"
                             placeholder="Email"
                         />

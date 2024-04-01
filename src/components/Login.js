@@ -41,7 +41,7 @@ function Login() {
                             </label>
                             <input
                                 id="email"
-                                type="text"
+                                type="email"
                                 className="tbxEmail"
                                 placeholder={emailPlaceholder}
                             />
