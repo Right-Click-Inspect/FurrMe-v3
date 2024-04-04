@@ -40,47 +40,16 @@ function AllPets() {
         };
     }, []);
 
-    const handleAgeClick = () => {
-        setAgeClick(!ageClick);
-        setAgeCaretDirection(ageClick ? "down" : "up");
-        if (breedClick) {
-            setBreedClick(false);
-            setBreedCaretDirection("down");
-        }
-        if (colorClick) {
-            // Close color dropdown if it's open
-            setColorClick(false);
-            setColorCaretDirection("down");
-        }
-    };
-
-    const handleBreedClick = () => {
-        setBreedClick(!breedClick);
-        setBreedCaretDirection(breedClick ? "down" : "up");
-        if (ageClick) {
+    const handleFilterClick = (setState, setDirection, currentState, ) => {
+        setState(!currentState);
+        setDirection(currentState ? "down" : "up");
+        if (currentState) {
             setAgeClick(false);
             setAgeCaretDirection("down");
-        }
-        if (colorClick) {
-            // Close color dropdown if it's open
-            setColorClick(false);
-            setColorCaretDirection("down");
-        }
-    };
-
-    const handleColorClick = () => {
-        // Function to handle color dropdown click
-        setColorClick(!colorClick);
-        setColorCaretDirection(colorClick ? "down" : "up");
-        if (ageClick) {
-            // Close age dropdown if it's open
-            setAgeClick(false);
-            setAgeCaretDirection("down");
-        }
-        if (breedClick) {
-            // Close breed dropdown if it's open
             setBreedClick(false);
             setBreedCaretDirection("down");
+            setColorClick(false);
+            setColorCaretDirection("down");
         }
     };
 
@@ -109,10 +78,9 @@ function AllPets() {
                     </div>
                 </div>
                 <div className="filter-dropdowns">
-                    {/* If doable bai pwede ra mo scan sa db nya if unsa ang available breeds kay mao pd mo reflect sa list ari || OVERRITE: IKAW LANG BUOT SA LOGIC GAMITON SA MGA FILTERS FRE */}
                     <div
                         className="petFilter ageFilter"
-                        onClick={handleAgeClick}
+                        onClick={() => handleFilterClick(setAgeClick, setAgeCaretDirection, ageClick, ageCaretDirection)}
                         ref={ageRef}
                     >
                         <div className="filterTitle">
@@ -133,7 +101,7 @@ function AllPets() {
                     </div>
                     <div
                         className="petFilter breedFilter"
-                        onClick={handleBreedClick}
+                        onClick={() => handleFilterClick(setBreedClick, setBreedCaretDirection, breedClick, breedCaretDirection)}
                         ref={breedRef}
                     >
                         <div className="filterTitle">
@@ -154,8 +122,8 @@ function AllPets() {
                     </div>
                     <div
                         className="petFilter colorFilter"
-                        onClick={handleColorClick} // Attach handleColorClick function
-                        ref={colorRef} // Assign colorRef to ref attribute
+                        onClick={() => handleFilterClick(setColorClick, setColorCaretDirection, colorClick, colorCaretDirection)}
+                        ref={colorRef}
                     >
                         <div className="filterTitle">
                             <p>Color</p>
