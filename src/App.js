@@ -7,6 +7,7 @@ import Homepage from "./components/Homepage";
 import AllPets from "./components/AllPets";
 import DogsPage from './components/DogsPage'
 import CatsPage from './components/CatsPage'
+import PetPrev from './components/PetPreview'
 
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -14,7 +15,7 @@ function App() {
     return (
         <Router>
             {/* <Signup /> */}
-            <CatsPage />
+            <PetPrev />
             {/* <Homepage/> */}
         </Router>
     );

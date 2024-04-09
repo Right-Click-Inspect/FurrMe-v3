@@ -3,6 +3,7 @@ import "../components/AllPets.css";
 import AllPetsData from "../assets/AllPetsData";
 import PetCard from "./PetCard";
 import Navbar from "../components/Navbar";
+import petPrevPage from "../components/PetPreview";
 
 function AllPets() {
     const [ageClick, setAgeClick] = useState(false);
