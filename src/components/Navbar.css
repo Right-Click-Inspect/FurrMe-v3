@@ -18,6 +18,7 @@
 :root {
     --mainColor: #f2e6d6;
     --primaryTextColor: #474747;
+    --hoverColor: #d4bb9a;
 }
 
 .navbar {
@@ -91,6 +92,90 @@
     border-bottom: 1px solid #9c784a;
     transition: all 0.5s ease;
 }
+
+.accountName {
+    border: 2px solid var(--primaryTextColor);
+    border-radius: 6px;
+    padding: 5px 15px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.accountName:hover {
+    transform: scale(1.02);
+    background-color: var(--hoverColor);
+}
+
+.iconDropDown {
+    position: absolute;
+    top: 100%;
+    right: 55px;
+    width: 300px;
+    background: #fff;
+    padding: 20px;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 7px;
+    display: none;
+    overflow: hidden;
+}
+
+.iconDropDown.open {
+    display: flex;
+}
+
+.iconDropDown .profileName {
+    text-align: center;
+    color: var(--primaryTextColor);
+    font-weight: 500;
+    transition: 0.5s;
+}
+
+.iconDropDown .profileName:hover {
+    transform: scale(1.05);
+    font-weight: 600;
+}
+
+.iconDropDown hr {
+    border: 0;
+    height: 1px;
+    background-color: var(--primaryTextColor);
+    margin: 5px 0 15px 0;
+}
+
+.dpNavList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.dpNavList a {
+    display: flex;
+    align-items: center;
+}
+
+.dpNavList .rightIcon {
+    color: var(--primaryTextColor);
+    position: absolute;
+    right: 20px;
+    transition: transform 0.5s;
+}
+
+.dpNavList a:hover .rightIcon {
+    transform: translateX(5px);
+}
+
+.dpNavList h3 {
+    color: var(--primaryTextColor);
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.dpNavList a:hover h3 {
+    font-weight: 500;
+}
+
 
 @media screen and (max-width: 960px) {
     .menu-icon {

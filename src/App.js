@@ -15,7 +15,7 @@ function App() {
     return (
         <Router>
             {/* <Signup /> */}
-            <PetPrev />
+            <Signup />
             {/* <Homepage/> */}
         </Router>
     );
