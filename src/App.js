@@ -8,15 +8,16 @@ import AllPets from "./components/AllPets";
 import DogsPage from './components/DogsPage'
 import CatsPage from './components/CatsPage'
 import PetPrev from './components/PetPreview'
+import PostCard from './components/CommunityPostCard'
+import Community from './components/Community'
+import AdoptionVerification from './components/AdoptionVerification'
 
 import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
     return (
         <Router>
-            {/* <Signup /> */}
-            <Signup />
-            {/* <Homepage/> */}
+            <AdoptionVerification/>
         </Router>
     );
 }

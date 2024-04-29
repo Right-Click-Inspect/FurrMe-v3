@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;600&display=swap");
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    scroll-behavior: smooth;
+    font-family: "Poppins", sans-serif;
+    transition: 0.2s;
+}
+
+:root {
+    --mainColor: #f2e6d6;
+    --primaryTextColor: #474747;
+    --hoverColor: #d4bb9a;
+}
+
+.adoptionVerification {
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.adoptionVerification .header {
+    margin-top: 20px;
+    width: 60%;
+    height: 100px;
+    padding: 10px 20px;
+}
+
+.adoptionVerification .header h2 {
+    font-size: 1.875rem;
+}
+
+.adoptionVerification .header p {
+    color: rgb(104, 104, 104);
+    font-size: 15px;
+}
+
+.adoptionVerification .inputContainer {
+    width: 60%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.adoptionVerification .inputContainer label {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.adoptionVerification .inputContainer input, textarea {
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 5px;
+    font-size: 13px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.attachValidID {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.adoptionVerification .btnValidID {
+    background: none;
+    border: 1px solid rgb(207, 207, 207);
+    width: 100%;
+    border-radius: 5px;
+    color: rgb(158, 158, 158);
+    padding: 7px;
+    text-align: start;
+    cursor: pointer;
+}
+
+.adoptionVerification .btnValidID:hover {
+    border: 1px solid black;
+}
+
+.removeID {
+    margin-right: 10px;
+    color: rgb(158, 158, 158);
+
+}
+
+.removeID:hover {
+    color: black;
+    cursor: pointer;
+    transform: scale(1.04);
+}
+
+.adoptionVerification #address {
+    resize: none;
+}
+
+.TAC-header {
+    margin-top: 20px;
+    border: none;
+    background-color: rgb(233, 233, 233);
+    width: 60%;
+    padding: 8px 20px;
+    border-radius: 7px;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.TAC-header:hover {
+    transform: scale(1.01);
+}
+
+.termsAndConditions {
+    position: relative;
+    width: 60%;
+}
+
+.TAC-list {
+    margin-top: 5px;
+    width: 100%;
+    background-color: rgb(233, 233, 233);
+    border-radius: 7px;
+    padding: 20px;
+    font-size: 15px;
+    display: none;
+}
+
+.adoptionVerification .submitBtn {
+    background-color: var(--primaryTextColor);
+    color: white;
+    padding: 8px;
+    width: 60%;
+    border-radius: 7px;
+    cursor: pointer;
+    margin: 15px 0;
+    transition: margin-top 0.5s ease;
+}
+
+.adoptionVerification .submitBtn:hover {
+    background-color: #4e4e4e;
+}
+
+
+
+
+
+
