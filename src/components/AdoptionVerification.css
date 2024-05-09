@@ -54,6 +54,12 @@
     margin-top: 20px;
 }
 
+.adoptionVerification .petNamePrev {
+    color: var(--primaryTextColor);
+    text-align: center;
+    
+}
+
 .adoptionVerification .inputContainer label {
     font-size: 15px;
     margin-bottom: 5px;

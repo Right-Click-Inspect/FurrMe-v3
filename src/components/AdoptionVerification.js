@@ -44,6 +44,7 @@ function AdoptionVerification() {
                     </p>
                 </div>
                 <div className="inputContainer">
+                    <p className="petNamePrev">Pet for Adoption: Buddy</p>
                     <label htmlFor="email">Email</label>
                     <input
                         type="text"
