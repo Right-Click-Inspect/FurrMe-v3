@@ -13,14 +13,19 @@ import Community from "./components/Community";
 import AdoptionVerification from "./components/AdoptionVerification";
 import ForgotPassword from "./components/ForgotPassword";
 import ManageProfile from "./components/ManageProfile";
+import Resources from "./components/Resources";
+import Footer from "./components/Footer";
+import TermsAndConditions from "./components/TermsAndConditions";
 
 import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
     return (
-        <Router>
-            <AdoptionVerification />
-        </Router>
+        <div className="App">
+            <Router>
+                <TermsAndConditions />
+            </Router>
+        </div>
     );
 }
 
