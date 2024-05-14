@@ -21,8 +21,44 @@
     --hoverColor: #d4bb9a;
 }
 
-.adoptionVerification {
+.adoptionVerificationContainer {
     padding-top: 80px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.adoptionVerificationContainer .petDetails {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5%;
+
+}
+
+.adoptionVerificationContainer .petDetails .petDetailsImgContainer {
+    max-width: 300px;
+    height: auto;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+.adoptionVerificationContainer .petDetails h3 {
+    padding-bottom: 20px;
+}
+
+.adoptionVerificationContainer .petDetails .petDetailsImgContainer .petDetailsImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.adoptionVerificationContainer .petDetails h2 {
+    font-size: 40px;
+}
+
+.adoptionVerification {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,7 +67,6 @@
 .adoptionVerification .header {
     margin-top: 20px;
     width: 60%;
-    height: 100px;
     padding: 10px 20px;
 }
 
@@ -45,7 +80,7 @@
 }
 
 .adoptionVerification .inputContainer {
-    width: 60%;
+    width: 70%;
     padding: 30px;
     display: flex;
     flex-direction: column;
@@ -115,7 +150,7 @@
     margin-top: 20px;
     border: none;
     background-color: rgb(233, 233, 233);
-    width: 60%;
+    width: 70%;
     padding: 8px 20px;
     border-radius: 7px;
     font-size: 15px;
@@ -131,7 +166,7 @@
 
 .termsAndConditions {
     position: relative;
-    width: 60%;
+    width: 70%;
 }
 
 .TAC-list {
@@ -148,7 +183,7 @@
     background-color: var(--primaryTextColor);
     color: white;
     padding: 8px;
-    width: 60%;
+    width: 70%;
     border-radius: 7px;
     cursor: pointer;
     margin: 15px 0;
