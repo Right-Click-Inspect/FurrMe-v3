@@ -24,7 +24,7 @@ function App() {
     return (
         <div className="App">
             <Router>
-                <FAQs />
+                <CatsPage />
             </Router>
         </div>
     );

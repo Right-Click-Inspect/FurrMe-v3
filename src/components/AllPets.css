@@ -76,7 +76,7 @@
     width: 80%;
     justify-items: center;
     align-items: center;
-    cursor: pointer;
+    cursor: default;
 }
 
 .headerTitle:hover,
@@ -98,6 +98,29 @@
     height: 4px;
     width: 40%;
     background: var(--primaryTextColor);
+}
+
+.searchBarContainer {
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 0 20px;
+}
+
+.searchBarContainer .searchBar {
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    width: 400px;
+    font-size: 12;
+}
+
+.searchBarContainer .searchIcon {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
 }
 
 .filter-dropdowns {

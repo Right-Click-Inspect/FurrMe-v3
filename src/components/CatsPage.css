@@ -30,7 +30,7 @@
 }
 
 .cp-bannerContainer {
-    margin: 50px 0 60px 0;
+    margin: 50px 0 30px 0;
     width: 80%;
     height: 55vh;
 }
@@ -41,5 +41,29 @@
     min-height: 100%;
     background-position: center;
     background-size: cover;
+}
+
+.searchBarContainer {
+    display: flex;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 0 20px;
+    margin: 20px 30px;
+}
+
+.searchBarContainer .searchBar {
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    width: 400px;
+    font-size: 12;
+}
+
+.searchBarContainer .searchIcon {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
 }
 

@@ -3,13 +3,13 @@ import "../components/CatsPage.css";
 import CatsPageData from "../assets/Cats";
 import PetCard from "./PetCard";
 import Navbar from "../components/Navbar";
+import { IoIosSearch } from "react-icons/io";
 
 function CatsPage() {
     const [ageClick, setAgeClick] = useState(false);
     const [breedClick, setBreedClick] = useState(false);
     const [colorClick, setColorClick] = useState(false); // State for color filter
     const [ageCaretDirection, setAgeCaretDirection] = useState("down");
-    const [breedCaretDirection, setBreedCaretDirection] = useState("down");
     const [colorCaretDirection, setColorCaretDirection] = useState("down"); // State for color caret direction
     const ageRef = useRef(null);
     const breedRef = useRef(null);
@@ -20,15 +20,11 @@ function CatsPage() {
             if (
                 ageRef.current &&
                 !ageRef.current.contains(event.target) &&
-                breedRef.current &&
-                !breedRef.current.contains(event.target) &&
                 colorRef.current && // Check if colorRef exists
                 !colorRef.current.contains(event.target)
             ) {
                 setAgeClick(false);
                 setAgeCaretDirection("down");
-                setBreedClick(false);
-                setBreedCaretDirection("down");
                 setColorClick(false); // Set colorClick to false
                 setColorCaretDirection("down"); // Reset color caret direction
             }
@@ -46,8 +42,6 @@ function CatsPage() {
         if (currentState) {
             setAgeClick(false);
             setAgeCaretDirection("down");
-            setBreedClick(false);
-            setBreedCaretDirection("down");
             setColorClick(false);
             setColorCaretDirection("down");
         }
@@ -59,6 +53,14 @@ function CatsPage() {
             <div className="catsPage">
                 <div className="cp-bannerContainer">
                     <div className="cp-Banner"></div>
+                </div>
+                <div className="searchBarContainer">
+                    <input
+                        type="text"
+                        className="searchBar"
+                        placeholder="Search..."
+                    />
+                    <IoIosSearch className="searchIcon" />
                 </div>
                 <div className="filter-dropdowns">
                     <div
@@ -87,34 +89,6 @@ function CatsPage() {
                             <li>Puppy</li>
                             <li>Middle-Aged</li>
                             <li>Adult</li>
-                        </ul>
-                    </div>
-                    <div
-                        className="petFilter breedFilter"
-                        onClick={() =>
-                            handleFilterClick(
-                                setBreedClick,
-                                setBreedCaretDirection,
-                                breedClick,
-                                breedCaretDirection
-                            )
-                        }
-                        ref={breedRef}
-                    >
-                        <div className="filterTitle">
-                            <p>Breed</p>
-                            <i
-                                className={`fa-solid fa-caret-${breedCaretDirection}`}
-                            ></i>
-                        </div>
-                        <ul
-                            className={
-                                breedClick ? "filterMenu active" : "filterMenu"
-                            }
-                        >
-                            <li>German Shepherd</li>
-                            <li>Golden Retriever</li>
-                            <li>Great Dane</li>
                         </ul>
                     </div>
                     <div
