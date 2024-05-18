@@ -9,12 +9,14 @@ import { FaCat, FaDog } from "react-icons/fa6";
 import AdminDashboardSidebar from "./AdminDashboardSidebar";
 
 function AdminDashboard() {
+    //Dropdown Functions
     const [isSearchBarFocused, setIsSearchBarFocused] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isStatusDropdownOpen, setIsStatusDropdownOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState("All Pets");
     const [selectedStatus, setSelectedStatus] = useState("Status");
     const [currentPage, setCurrentPage] = useState(1);
+    const [searchInput, setSearchInput] = useState("");
     const rowsPerPage = 10;
 
     const dropdownRef = useRef(null);
@@ -28,17 +30,23 @@ function AdminDashboard() {
         setIsStatusDropdownOpen(!isStatusDropdownOpen);
     };
 
+    //Page Reset on Dropdown Filter and Search Input Reset 
+
     const handleOptionClick = (option) => {
         setSelectedOption(option);
         setIsDropdownOpen(false);
-        setCurrentPage(1); // Reset currentPage to 1 when a new option is selected
+        setCurrentPage(1); 
+        setSearchInput(""); 
     };
 
     const handleStatusOptionClick = (status) => {
         setSelectedStatus(status);
         setIsStatusDropdownOpen(false);
-        setCurrentPage(1); // Reset currentPage to 1 when a new status option is selected
+        setCurrentPage(1); 
+        setSearchInput(""); 
     };
+
+    //Page Navigation
 
     const handlePreviousPage = () => {
         setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
@@ -48,9 +56,18 @@ function AdminDashboard() {
         setCurrentPage((prevPage) =>
             Math.min(
                 prevPage + 1,
-                Math.ceil(filteredPetList.length / rowsPerPage)
+                Math.ceil(searchedPets.length / rowsPerPage)
             )
         );
+    };
+
+    //Search Filtering and Dropdown Reset 
+
+    const handleSearchInputChange = (event) => {
+        setSearchInput(event.target.value); // Update search input state
+        setCurrentPage(1); // Reset currentPage to 1 when search input changes
+        setSelectedOption("All Pets"); // Reset dropdown to default when search input changes
+        setSelectedStatus("Status"); // Reset status dropdown to default when search input changes
     };
 
     const filteredPetList = adminPetList.filter((pet) => {
@@ -62,12 +79,20 @@ function AdminDashboard() {
         return typeMatch && statusMatch;
     });
 
+    const searchedPets = searchInput
+        ? filteredPetList.filter((pet) =>
+              pet.pet_Name.toLowerCase().includes(searchInput.toLowerCase())
+          )
+        : filteredPetList;
+
+    //Page Number 
     const startIndex = (currentPage - 1) * rowsPerPage;
-    const currentPets = filteredPetList.slice(
+    const currentPets = searchedPets.slice(
         startIndex,
         startIndex + rowsPerPage
     );
-
+    
+    //Dropdown Effect
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (
@@ -92,19 +117,6 @@ function AdminDashboard() {
         };
     }, []);
 
-    const [searchInput, setSearchInput] = useState(""); // Add state for search input
-
-    const handleSearchInputChange = (event) => {
-        setSearchInput(event.target.value); // Update search input state
-        setCurrentPage(1); // Reset currentPage to 1 when search input changes
-    };
-
-    const searchedPets = searchInput
-        ? currentPets.filter((pet) =>
-              pet.pet_Name.toLowerCase().includes(searchInput.toLowerCase())
-          )
-        : currentPets;
-
     return (
         <div className="adminDashboard">
             <div className="sidebarComp">
@@ -123,8 +135,8 @@ function AdminDashboard() {
                             placeholder="Search pets..."
                             onFocus={() => setIsSearchBarFocused(true)}
                             onBlur={() => setIsSearchBarFocused(false)}
-                            value={searchInput} // Bind input value to searchInput state
-                            onChange={handleSearchInputChange} // Add onChange event handler
+                            value={searchInput} 
+                            onChange={handleSearchInputChange} 
                         />
                     </div>
                     <div className="tableFilters">
@@ -224,12 +236,12 @@ function AdminDashboard() {
                             </tr>
                         </thead>
                         <tbody>
-                            {searchedPets.length === 0 ? ( // Check if no results found
+                            {currentPets.length === 0 ? ( 
                                 <tr>
                                     <td colSpan="3">No Pet Listing Found</td>
                                 </tr>
                             ) : (
-                                searchedPets.map((pet) => (
+                                currentPets.map((pet) => (
                                     <tr key={pet.pet_ID}>
                                         <td>
                                             {pet.pet_Type === "Dog" && (
@@ -260,7 +272,7 @@ function AdminDashboard() {
                     </div>
                     <p className="pageNum">
                         Page {currentPage} of{" "}
-                        {Math.ceil(filteredPetList.length / rowsPerPage)}
+                        {Math.ceil(searchedPets.length / rowsPerPage)}
                     </p>
                     <div className="pageNav" onClick={handleNextPage}>
                         <p>Next</p>

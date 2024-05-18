@@ -132,7 +132,7 @@
 
 .adminDashboard .mainContent .tableContainer {
     min-height: 552px;
-    min-width: 80%;
+    width: 80%;
     margin: auto;
     background-color: rgb(250, 250, 250);
     border-radius: 8px;
