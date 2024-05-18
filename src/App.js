@@ -17,6 +17,8 @@ import Resources from "./components/Resources";
 import Footer from "./components/Footer";
 import TermsAndConditions from "./components/TermsAndConditions";
 import FAQs from "./components/FAQs";
+import AdminDashboard from "./components/AdminDashboard";
+import AdminDashboardSidebar from "./components/AdminDashboardSidebar";
 
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -24,7 +26,7 @@ function App() {
     return (
         <div className="App">
             <Router>
-                <CatsPage />
+                <AdminDashboard />
             </Router>
         </div>
     );
