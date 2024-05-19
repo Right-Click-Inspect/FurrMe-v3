@@ -25,216 +25,182 @@
     background-color: var(--mainColor);
     width: 100%;
     height: 80px;
-    display: flex;
-    align-items: center;
-    font-size: 1.1rem;
-    justify-content: space-around;
-    padding: 0 45px;
+    font-size: 18px;
+    padding: 0 80px 0 50px;
     position: fixed;
     z-index: 1000;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.logo {
-    height: 65px;
-    width: auto;
-}
-
-.navigations {
-    display: flex;
-}
-
-.navbar-logo {
-    color: var(--primaryTextColor);
-    font-weight: 600;
-    font-size: 2.5rem;
     display: flex;
     align-items: center;
-    gap: 5px;
 }
 
-.btn-login {
-    background: transparent;
-    font-size: 1.1rem;
-    padding: 5px 40px;
+.navbar .logo {
+    display: flex;
+    align-items: center;
     cursor: pointer;
-    border-radius: 5px;
-    display: none; 
 }
 
-.btn-login:hover {
-    border-color: #9c784a;
-    transform: scale(1.05);
+.navbar .logo img {
+    width: 55px;
+    height: auto;
+    color: var(--primaryTextColor);
 }
 
-.mobile-link {
-    display: none;
+.navbar .logo h2 {
+    color: var(--primaryTextColor);
+    font-size: 40px;
 }
 
-.nav-menu {
+.navbar .navList {
     display: flex;
-    padding: 0 10px;
     align-items: center;
-    gap: 1.5rem;
-    width: 50vw;
     justify-content: space-evenly;
+    width: 75%;
+    height: 100%;
+    padding: 0 50px;
+    gap: 20px;
 }
 
-.nav-links {
-    color: var(--primaryTextColor);
-    padding: 0.6rem 1rem;
+.navbar .navList .navItem {
+    text-align: center;
+    position: relative;
+    width: 25%;
 }
 
-.menu-icon {
-    visibility: hidden;
-}
-
-.nav-item:hover {
-    border-bottom: 1px solid #9c784a;
-    transition: all 0.5s ease;
-}
-
-.accountName {
-    border: 2px solid var(--primaryTextColor);
-    border-radius: 6px;
-    padding: 5px 15px;
-    transition: 0.5s;
+.navbar .navList .navItem p {
+    border-radius: 7px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 5px 0;
 }
 
-.accountName:hover {
-    transform: scale(1.02);
+.navbar .navList .navItem p:hover {
     background-color: var(--hoverColor);
 }
 
-.iconDropDown {
+.navbar .navList .navItem .dropdown {
     position: absolute;
-    top: 100%;
-    right: 55px;
-    width: 300px;
-    background: #fff;
-    padding: 20px;
-    margin: 0 10px;
-    display: flex;
-    flex-direction: column;
+    max-width: 350px;
+    background-color: var(--mainColor);
     border-radius: 7px;
-    display: none;
-    overflow: hidden;
-}
-
-.iconDropDown.open {
-    display: flex;
-}
-
-.iconDropDown .profileName {
-    text-align: center;
-    color: var(--primaryTextColor);
-    font-weight: 500;
-    transition: 0.5s;
-}
-
-.iconDropDown .profileName:hover {
-    transform: scale(1.05);
-    font-weight: 600;
-}
-
-.iconDropDown hr {
-    border: 0;
-    height: 1px;
-    background-color: var(--primaryTextColor);
-    margin: 5px 0 15px 0;
-}
-
-.dpNavList {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
+    padding: 15px 20px;
+    border: 1px solid var(--hoverColor);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    font-size: 16px;
 }
 
-.dpNavList a {
+.navbar .navList .navItem .dropdown.pets,
+.dropdown.socials {
+    left: 35%;
+}
+
+.navbar .navList .navItem .dropdown.socials {
+    left: 15%;
+}
+
+.navbar .navList .navItem .dropdown li {
+    cursor: pointer;
+    border-radius: 7px;
+    gap: 10px;
+    padding: 5px 25px 5px 10px;
+    text-wrap: nowrap;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
-.dpNavList .rightIcon {
-    color: var(--primaryTextColor);
+.navbar .navList .navItem .dropdown li:hover {
+    background-color: var(--hoverColor);
+}
+
+.navbar .navList .navItem .dropdown .rightIcon {
+    height: 15px;
+    width: 15px;
     position: absolute;
-    right: 20px;
-    transition: transform 0.5s;
+    right: 5px;
 }
 
-.dpNavList a:hover .rightIcon {
-    transform: translateX(5px);
+.navbar .loginBtn-accountIcon {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
-.dpNavList h3 {
-    color: var(--primaryTextColor);
-    font-weight: 400;
-    font-size: 18px;
+.navbar .loginBtn-accountIcon button {
+    background-color: var(--primaryTextColor);
+    height: 40px;
+    color: white;
+    padding: 10px 50px;
+    border-radius: 7px;
+    border: none;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
 }
 
-.dpNavList a:hover h3 {
-    font-weight: 500;
+.navbar .loginBtn-accountIcon button:hover {
+    background-color: rgb(85, 85, 85);
 }
 
+.navbar .DP-Icon {
+    min-width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    border: px solid var(--primaryTextColor);
+    margin-left: auto;
+}
 
-@media screen and (max-width: 960px) {
-    .menu-icon {
-        visibility: visible;
-        position: absolute;
-        top: 1.8rem;
-        right: 1.5rem;
-    }
+.navbar .DP-Icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-    .navbar-logo {
-        position: absolute;
-        top: 0.5rem;
-        left: 1.5rem;
-    }
+.navbar .loginBtn-accountIcon .userDropdown {
+    background-color: var(--mainColor);
+    border-radius: 7px;
+    border: 1px solid var(--hoverColor);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    font-size: 16px;
+    padding: 15px 20px;
+    width: 240px;
+    position: absolute;
+    top: 80px;
+    right: 0;    
+}
 
-    .nav-menu {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-top: 40px;
-        font-size: 1.5rem;
-        gap: 2rem;
-        width: 100%;
-        position: fixed;
-        top: 80px;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        position: absolute;
-        top: 80px;
-        left: -100%;
-        transition: all 0.5s ease;
-        background-color: var(--mainColor);
-        justify-content: flex-start;
-    }
+.navbar .loginBtn-accountIcon .userDropdown li {
+    padding: 5px 5px;
+    cursor: pointer;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    text-wrap: nowrap;
+    position: relative;
+    gap: 3px;
+}
 
-    .mobile-link {
-        display: block;
-        text-align: center;
-        padding: 0.5rem 5rem;
-        border-radius: 5px;
-        background: var(--primaryTextColor);
-        color: var(--mainColor);
-    }
+.navbar .loginBtn-accountIcon .userDropdown li:hover {
+    background-color: var(--hoverColor);
+}
 
-    .nav-menu.active {
-        left: 0;
-        opacity: 1;
-        transition: all 0.5s ease;
-        z-index: 1;
-        height: 100vh;
-    }
+.navbar .loginBtn-accountIcon .userDropdown .dropdownIcon {
+    height: 15px;
+    width: 15px;
+}
 
-    .btn-login {
-        display: none;
-    }
-
-    .nav-links:hover {
-        background-color: #9c784a;
-    }
+.navbar .loginBtn-accountIcon .userDropdown .rightIcon-UDP {
+    position: absolute;
+    right: 5px;
 }

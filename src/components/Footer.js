@@ -13,6 +13,7 @@ function Footer() {
                 <li>Pet Adoption Education</li>
                 <li>Pet Adoption Process</li>
                 <li>Terms and Conditions</li>
+                <li>FAQs</li>
             </ul>
             <ul className="navIcons">
                 <li>

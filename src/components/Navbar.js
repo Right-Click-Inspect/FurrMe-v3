@@ -1,127 +1,192 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { FiChevronRight } from "react-icons/fi";
 import Logo from "../assets/FurrMe Logo.png";
-import DisplayPhoto from "../assets/pet photos/cat photos/cat_img1.jpg";
 import "../components/Navbar.css";
+import {
+    MdOutlineKeyboardArrowDown,
+    MdOutlineKeyboardArrowUp,
+    MdOutlineDocumentScanner,
+} from "react-icons/md";
+import { FaAngleRight } from "react-icons/fa6";
+import { FiBook } from "react-icons/fi";
+import {
+    FaFacebook,
+    FaInstagram,
+    FaTiktok,
+    FaQuestion,
+    FaCat,
+    FaDog,
+} from "react-icons/fa";
+import { CgProfile } from "react-icons/cg";
+import { MdOutlinePets } from "react-icons/md";
+import { MdContactSupport } from "react-icons/md";
+import { IoIosLogOut } from "react-icons/io";
+import userProfilePic from "../assets/avatar-dp.jpg";
 
 function Navbar() {
-    const [click, setClick] = useState(false);
-    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [openDropdown, setOpenDropdown] = useState(null);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);//For Simulation (Please replace with correct authentication logic)
+    const navbarRef = useRef(null);
 
-    const handleClick = () => setClick(!click);
-    const closeMobileMenu = () => setClick(false);
-    const closeDropdown = () => setDropdownOpen(false);
+    const toggleDropdown = (dropdown) => {
+        setOpenDropdown(openDropdown === dropdown ? null : dropdown);
+    };
 
-    const toggleDropdown = () => {
-        setDropdownOpen(!dropdownOpen);
+    const closeDropdown = () => {
+        setOpenDropdown(null);
+    };
+
+    //For Simulation (Please replace with correct authentication logic)
+    const handleLogin = () => {
+        setIsLoggedIn(!isLoggedIn);
+        setOpenDropdown(null);
     };
 
     useEffect(() => {
-        const closeMenuOnOutsideClick = (e) => {
+        const handleClickOutside = (event) => {
             if (
-                dropdownOpen &&
-                !document.querySelector(".iconDropDown").contains(e.target) &&
-                !document.querySelector(".accountName").contains(e.target)
+                navbarRef.current &&
+                !navbarRef.current.contains(event.target)
             ) {
-                setDropdownOpen(false);
+                closeDropdown();
             }
         };
-
-        document.addEventListener("mousedown", closeMenuOnOutsideClick);
-
+        document.addEventListener("mousedown", handleClickOutside);
         return () => {
-            document.removeEventListener("mousedown", closeMenuOnOutsideClick);
+            document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [dropdownOpen]);
+    }, []);
 
     return (
-        <div>
-            <nav className="navbar">
-                <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-                    <img className="logo" src={Logo} alt="" />
-                    FurrMe
-                </Link>
-                <div className="menu-icon" onClick={handleClick}>
-                    <i className={click ? "fas fa-times" : "fas fa-bars"} />
+        <div className="navbar" ref={navbarRef}>
+            <div className="logo">
+                <img src={Logo} alt="FurrMe Logo" />
+                <h2>FurrMe</h2>
+            </div>
+            <div className="navList">
+                <div className="navItem pets">
+                    <p onClick={() => toggleDropdown("pets")}>
+                        Pets{" "}
+                        {openDropdown === "pets" ? (
+                            <MdOutlineKeyboardArrowUp />
+                        ) : (
+                            <MdOutlineKeyboardArrowDown />
+                        )}
+                    </p>
+                    {openDropdown === "pets" && (
+                        <ul className="dropdown pets" onClick={closeDropdown}>
+                            <li>
+                                <FaCat />
+                                Cats <FaAngleRight className="rightIcon" />
+                            </li>
+                            <li>
+                                <FaDog />
+                                Dogs <FaAngleRight className="rightIcon" />
+                            </li>
+                        </ul>
+                    )}
                 </div>
-                <ul className={click ? "nav-menu active" : "nav-menu"}>
-                    <li className="nav-item">
-                        <Link
-                            to="/"
-                            className="nav-links"
-                            onClick={closeMobileMenu}
+                <div className="navItem community">
+                    <p>Community</p>
+                </div>
+                <div className="navItem resources">
+                    <p onClick={() => toggleDropdown("resources")}>
+                        Resources{" "}
+                        {openDropdown === "resources" ? (
+                            <MdOutlineKeyboardArrowUp />
+                        ) : (
+                            <MdOutlineKeyboardArrowDown />
+                        )}
+                    </p>
+                    {openDropdown === "resources" && (
+                        <ul
+                            className="dropdown resources"
+                            onClick={closeDropdown}
                         >
-                            Cats
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link
-                            to="/"
-                            className="nav-links"
-                            onClick={closeMobileMenu}
+                            <li>
+                                <FaQuestion />
+                                FAQs <FaAngleRight className="rightIcon" />
+                            </li>
+                            <li>
+                                <MdOutlineDocumentScanner />
+                                Terms & Conditions{" "}
+                                <FaAngleRight className="rightIcon" />
+                            </li>
+                            <li>
+                                <FiBook />
+                                Education <FaAngleRight className="rightIcon" />
+                            </li>
+                        </ul>
+                    )}
+                </div>
+                <div className="navItem socials">
+                    <p onClick={() => toggleDropdown("socials")}>
+                        Socials{" "}
+                        {openDropdown === "socials" ? (
+                            <MdOutlineKeyboardArrowUp />
+                        ) : (
+                            <MdOutlineKeyboardArrowDown />
+                        )}
+                    </p>
+                    {openDropdown === "socials" && (
+                        <ul
+                            className="dropdown socials"
+                            onClick={closeDropdown}
                         >
-                            Dogs
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link
-                            to="/"
-                            className="nav-links"
-                            onClick={closeMobileMenu}
-                        >
-                            Community
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link
-                            to="/"
-                            className="nav-links"
-                            onClick={closeMobileMenu}
-                        >
-                            Resources
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link
-                            to="/"
-                            className="nav-links mobile-link"
-                            onClick={closeMobileMenu}
-                        >
-                            Sign Up
-                        </Link>
-                    </li>
-                </ul>
-                <Link to="/">
-                    <button className="btn-login">Login</button>
-                </Link>
-                <h3 className="accountName" onClick={toggleDropdown}>
-                    Account Name
-                </h3>
-                <div className={`iconDropDown ${dropdownOpen ? "open" : ""}`}>
-                    <Link onClick={closeMobileMenu}>
-                        <h3 className="profileName" onClick={closeDropdown}>
-                            Frankie Richards
-                        </h3>
-                    </Link>
-                    <hr />
-                    <div className="dpNavList">
-                        <Link onClick={closeDropdown}>
-                            <h3>Adoption Requests</h3>
-                            <FiChevronRight className="rightIcon" />
-                        </Link>
-                        <Link onClick={closeDropdown}>
-                            <h3>Help & Support</h3>
-                            <FiChevronRight className="rightIcon" />
-                        </Link>
-                        <Link onClick={closeDropdown}>
-                            <h3>Logout</h3>
-                            <FiChevronRight className="rightIcon" />
-                        </Link>
+                            <li>
+                                <FaInstagram />
+                                Instagram <FaAngleRight className="rightIcon" />
+                            </li>
+                            <li>
+                                <FaFacebook />
+                                Facebook <FaAngleRight className="rightIcon" />
+                            </li>
+                            <li>
+                                <FaTiktok />
+                                Tiktok <FaAngleRight className="rightIcon" />
+                            </li>
+                        </ul>
+                    )}
+                </div>
+            </div>
+            <div className="loginBtn-accountIcon">
+                {/* From Here */}
+                {isLoggedIn ? (
+                    <div
+                        className="DP-Icon"
+                        onClick={() => toggleDropdown("user")}
+                    >
+                        <img src={userProfilePic} />
                     </div>
-                </div>
-            </nav>
+                ) : (
+                    <button onClick={handleLogin}>Login</button>
+                )}
+                {/*To here : Replace with <Button>Login<Button/> kay gi modify rana pang simulation sa Login Button og Avatar Icon if naka login or wala */}
+                {openDropdown === "user" && (
+                    <ul className="userDropdown" onClick={closeDropdown}>
+                        <li>
+                            <CgProfile className="dropdownIcon" />
+                            My Profile
+                            <FaAngleRight className="rightIcon-UDP" />
+                        </li>
+                        <li>
+                            <MdOutlinePets className="dropdownIcon" />
+                            Adoption Requests
+                            <FaAngleRight className="rightIcon-UDP" />
+                        </li>
+                        <li>
+                            <MdContactSupport className="dropdownIcon" />
+                            Help & Support
+                            <FaAngleRight className="rightIcon-UDP" />
+                        </li>
+                        <li>
+                            <IoIosLogOut className="dropdownIcon" />
+                            Logout
+                            <FaAngleRight className="rightIcon-UDP" />
+                        </li>
+                    </ul>
+                )}
+            </div>
         </div>
     );
 }
