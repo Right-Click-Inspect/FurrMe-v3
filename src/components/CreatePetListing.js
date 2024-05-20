@@ -1,12 +1,78 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../components/CreatePetListing.css";
 import AdminDashboardSidebar from "./AdminDashboardSidebar";
 import {
     MdOutlineKeyboardArrowDown,
     MdOutlineKeyboardArrowUp,
 } from "react-icons/md";
+import { IoCloseCircleOutline } from "react-icons/io5";
 
 function CreatePetListing() {
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [selectedPetType, setSelectedPetType] = useState("Select Pet Type");
+    const [fileNames, setFileNames] = useState([]);
+    const [petBehavior, setPetBehavior] = useState("");
+    const [petHealth, setPetHealth] = useState("");
+    const [petDescription, setPetDescription] = useState("");
+    const dropdownRef = useRef(null);
+    const fileInputRef = useRef(null);
+
+    const toggleDropdown = () => {
+        setDropdownOpen(!dropdownOpen);
+    };
+
+    const closeDropdown = () => {
+        setDropdownOpen(false);
+    };
+
+    const handleClickOutside = (event) => {
+        if (
+            dropdownRef.current &&
+            !dropdownRef.current.contains(event.target)
+        ) {
+            closeDropdown();
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
+    const handleFileUpload = (event) => {
+        const files = Array.from(event.target.files);
+        const imageFiles = files.filter((file) => {
+            return file.type === "image/jpeg" || file.type === "image/png";
+        });
+        const fileNamesArray = imageFiles.map((file) => file.name);
+        if (fileNamesArray.length + fileNames.length <= 8) {
+            setFileNames([...fileNames, ...fileNamesArray]);
+        } else {
+            alert("You can only upload a maximum of 8 images.");
+        }
+        fileInputRef.current.value = ""; // Clear the file input value after handling the upload
+    };
+
+    const handleRemoveFile = (fileNameToRemove) => {
+        setFileNames(
+            fileNames.filter((fileName) => fileName !== fileNameToRemove)
+        );
+    };
+
+    const handleSelectPetType = (type) => {
+        setSelectedPetType(type);
+        closeDropdown();
+    };
+
+    const handleCharacterLimit = (event, setter, maxChars) => {
+        if (event.target.value.length > maxChars) {
+            event.target.value = event.target.value.slice(0, maxChars);
+        }
+        setter(event.target.value);
+    };
+
     return (
         <div className="createPetListing">
             <div className="sidebarComp">
@@ -21,12 +87,40 @@ function CreatePetListing() {
                             <input type="text" />
                         </div>
                         <div className="containers">
-                            <div className="inputs type">
+                            <div className="inputs type" ref={dropdownRef}>
                                 <label htmlFor="petType">Pet Type</label>
-                                <p>
-                                    Select Pet Type
-                                    <MdOutlineKeyboardArrowDown />
+                                <p
+                                    className="petTypeDP-Header"
+                                    onClick={toggleDropdown}
+                                >
+                                    {selectedPetType}
+                                    {dropdownOpen ? (
+                                        <MdOutlineKeyboardArrowUp />
+                                    ) : (
+                                        <MdOutlineKeyboardArrowDown />
+                                    )}
                                 </p>
+                                {dropdownOpen && (
+                                    <ul
+                                        className="petTypeDropdown"
+                                        onClick={(e) => e.stopPropagation()}
+                                    >
+                                        <li
+                                            onClick={() =>
+                                                handleSelectPetType("Cat")
+                                            }
+                                        >
+                                            Cat
+                                        </li>
+                                        <li
+                                            onClick={() =>
+                                                handleSelectPetType("Dog")
+                                            }
+                                        >
+                                            Dog
+                                        </li>
+                                    </ul>
+                                )}
                             </div>
                             <div className="inputs breed">
                                 <label htmlFor="petBreed">Breed</label>
@@ -46,33 +140,75 @@ function CreatePetListing() {
                     </div>
                     <div className="descriptionInfo">
                         <div className="descContainer behavior">
-                            <label htmlFor="petBahavior">Behavior</label>
+                            <label htmlFor="petBehavior">Behavior</label>
                             <textarea
                                 name="petBehavior"
                                 id="petBehavior"
+                                value={petBehavior}
+                                onChange={(e) =>
+                                    handleCharacterLimit(e, setPetBehavior, 100)
+                                }
                             ></textarea>
-                            <p>Maximum of 15 words</p>
+                            <p>{petBehavior.length} / 100 characters</p>
                         </div>
                         <div className="descContainer health">
                             <label htmlFor="petHealth">Health</label>
                             <textarea
                                 name="petHealth"
                                 id="petHealth"
+                                value={petHealth}
+                                onChange={(e) =>
+                                    handleCharacterLimit(e, setPetHealth, 200)
+                                }
                             ></textarea>
-                            <p>Maximum of 30 words</p>
+                            <p>{petHealth.length} / 200 characters</p>
                         </div>
                         <div className="descContainer petDescription">
-                            <label htmlFor="petDescription">Behavior</label>
+                            <label htmlFor="petDescription">Description</label>
                             <textarea
                                 name="petDescription"
                                 id="petDescription"
+                                value={petDescription}
+                                onChange={(e) =>
+                                    handleCharacterLimit(
+                                        e,
+                                        setPetDescription,
+                                        400
+                                    )
+                                }
                             ></textarea>
-                            <p>Maximum of 45 words</p>
+                            <p>{petDescription.length} / 400 characters</p>
                         </div>
                     </div>
                     <div className="uploadImgContainer">
-                        <button>Upload Images</button>
-                        <div className="imgFileNames"><p>No Files Chosen</p></div>
+                        <label htmlFor="upload" className="uploadFilesBtn">
+                            Upload Images{" "}
+                            <input
+                                id="upload"
+                                type="file"
+                                accept=".jpg, .jpeg, .png"
+                                multiple
+                                onChange={handleFileUpload}
+                                ref={fileInputRef} // Attach the ref to the file input
+                            />
+                        </label>
+                        <div className="imgFileNames">
+                            <ul>
+                                {fileNames.map((fileName, index) => (
+                                    <li key={index}>
+                                        {fileName.length > 20
+                                            ? `${fileName.substring(0, 20)}...`
+                                            : fileName}
+                                        <IoCloseCircleOutline
+                                            className="removeImg"
+                                            onClick={() =>
+                                                handleRemoveFile(fileName)
+                                            }
+                                        />
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
                     <button className="addButton">Add Pet to Listings</button>
                 </div>
