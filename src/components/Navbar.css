@@ -151,21 +151,20 @@
     background-color: rgb(85, 85, 85);
 }
 
-.navbar .DP-Icon {
-    min-width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    overflow: hidden;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+.navbar .displayedUsername {
+    text-wrap: nowrap;
+    font-size: 16px;
+    border: 1px solid var(--hoverColor);
+    border-radius: 7px;
+    padding: 5px 30px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
     cursor: pointer;
-    border: px solid var(--primaryTextColor);
-    margin-left: auto;
 }
 
-.navbar .DP-Icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.navbar .displayedUsername:hover {
+    background-color: var(--hoverColor);
 }
 
 .navbar .loginBtn-accountIcon .userDropdown {

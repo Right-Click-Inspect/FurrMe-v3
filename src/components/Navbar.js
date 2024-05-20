@@ -21,11 +21,10 @@ import { CgProfile } from "react-icons/cg";
 import { MdOutlinePets } from "react-icons/md";
 import { MdContactSupport } from "react-icons/md";
 import { IoIosLogOut } from "react-icons/io";
-import userProfilePic from "../assets/avatar-dp.jpg";
+import { MdOutlineAccountCircle } from "react-icons/md";
 
 function Navbar() {
     const [openDropdown, setOpenDropdown] = useState(null);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);//For Simulation (Please replace with correct authentication logic)
     const navbarRef = useRef(null);
 
     const toggleDropdown = (dropdown) => {
@@ -33,12 +32,6 @@ function Navbar() {
     };
 
     const closeDropdown = () => {
-        setOpenDropdown(null);
-    };
-
-    //For Simulation (Please replace with correct authentication logic)
-    const handleLogin = () => {
-        setIsLoggedIn(!isLoggedIn);
         setOpenDropdown(null);
     };
 
@@ -150,18 +143,14 @@ function Navbar() {
                 </div>
             </div>
             <div className="loginBtn-accountIcon">
-                {/* From Here */}
-                {isLoggedIn ? (
-                    <div
-                        className="DP-Icon"
-                        onClick={() => toggleDropdown("user")}
-                    >
-                        <img src={userProfilePic} />
-                    </div>
-                ) : (
-                    <button onClick={handleLogin}>Login</button>
-                )}
-                {/*To here : Replace with <Button>Login<Button/> kay gi modify rana pang simulation sa Login Button og Avatar Icon if naka login or wala */}
+                <button>Login</button>
+                <h2
+                    className="displayedUsername"
+                    onClick={() => toggleDropdown("user")}
+                >
+                    <MdOutlineAccountCircle />
+                    Kim Sasha
+                </h2>
                 {openDropdown === "user" && (
                     <ul className="userDropdown" onClick={closeDropdown}>
                         <li>
