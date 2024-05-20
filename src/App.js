@@ -19,6 +19,8 @@ import TermsAndConditions from "./components/TermsAndConditions";
 import FAQs from "./components/FAQs";
 import AdminDashboard from "./components/AdminDashboard";
 import AdminDashboardSidebar from "./components/AdminDashboardSidebar";
+import AdminAdoptionRequests from "./components/AdminAdoptionRequests";
+import CreatePetListing from "./components/CreatePetListing";
 
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -26,7 +28,7 @@ function App() {
     return (
         <div className="App">
             <Router>
-                <Resources />
+                <CreatePetListing />
             </Router>
         </div>
     );

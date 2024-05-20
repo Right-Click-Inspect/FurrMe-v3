@@ -4,7 +4,8 @@ import Logo from "../assets/FurrMe Logo.png";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { IoPawOutline } from "react-icons/io5";
 import { IoPeopleOutline } from "react-icons/io5";
-import { MdOutlineAccountCircle } from "react-icons/md";
+import { CiCirclePlus } from "react-icons/ci";
+import { CiLogout } from "react-icons/ci";
 
 function AdminDashboardSidebar() {
     return (
@@ -27,8 +28,12 @@ function AdminDashboardSidebar() {
                         Adoption Requests
                     </li>
                     <li>
-                        <MdOutlineAccountCircle className="navIcon" />
-                        Admin Accounts
+                        <CiCirclePlus className="navIcon" />
+                        Create Pet Listing
+                    </li>
+                    <li>
+                        <CiLogout  className="navIcon" />
+                        Logout
                     </li>
                 </ul>
             </div>
