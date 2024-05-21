@@ -241,6 +241,7 @@ function AdminAdoptionRequests() {
                     <table>
                         <thead>
                             <tr>
+                                <th>Date</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Pet</th>
@@ -250,6 +251,7 @@ function AdminAdoptionRequests() {
                         <tbody>
                             {currentRequests.map((request) => (
                                 <tr key={request.request_id}>
+                                    <td>{request.date}</td>
                                     <td>{request.name}</td>
                                     <td>{request.email}</td>
                                     <td>{request.pet}</td>

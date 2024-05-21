@@ -28,7 +28,7 @@ function App() {
     return (
         <div className="App">
             <Router>
-                <AdoptionVerification />
+                <AdminAdoptionRequests />
             </Router>
         </div>
     );
