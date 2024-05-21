@@ -57,6 +57,68 @@
     padding: 20px 0;
 }
 
+/* nameGender */
+
+.createPetListing .mainContent .inputsContainer .basicInfo .nameGenderContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    color: var(--primaryTextColor);
+}
+
+.createPetListing .mainContent .inputsContainer .basicInfo .nameGenderContainer .inputs {
+    width: 50%;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.createPetListing .mainContent .inputsContainer .basicInfo .nameGenderContainer .inputs.inputs.petGender {
+    position: relative;
+}
+
+.createPetListing .mainContent .inputsContainer .basicInfo .nameGenderContainer .inputs input {
+    width: 100%;
+}
+
+.createPetListing .mainContent .inputsContainer .basicInfo .nameGenderContainer .inputs p {
+    padding: 5px 10px;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 7px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    text-wrap: nowrap;
+    width: 100%;
+    position: relative;
+}
+
+.createPetListing .mainContent .inputsContainer .basicInfo .nameGenderContainer .inputs.petGender ul {
+    position: absolute;
+    width: 100%;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 7px;
+    padding: 10px;
+    background-color: white;
+    top: 55px;
+}
+
+.createPetListing .mainContent .inputsContainer .basicInfo .nameGenderContainer .inputs.petGender ul li {
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 7px;
+}
+
+.createPetListing .mainContent .inputsContainer .basicInfo .nameGenderContainer .inputs.petGender ul li:hover {
+    background-color: rgb(221, 221, 221);
+}
+
+/* Name gender */
+
 .createPetListing .mainContent .inputsContainer .basicInfo input {
     padding: 5px 10px;
     border: 1px solid rgb(200, 200, 200);

@@ -32,6 +32,7 @@ function PetPreview() {
     const petBreed = "Siamese";
     const petColor = "Orange";
     const petAge = 12;
+    const petGender = "Male";
     const petBehavior = "Playful • Goofy • Sleepy";
     const petHealth = "Fully Vaccinated";
     const petDescription =
@@ -107,9 +108,12 @@ function PetPreview() {
                         <h3>Breed: {petBreed}</h3>
                         <h3>Color: {petColor}</h3>
                         <h3>Age: {petAge}</h3>
+                        <h3>Gender: {petGender}</h3>
                         <h3>Behavior: {petBehavior}</h3>
                         <h3>Health: {petHealth}</h3>
-                        <h3 className="petDescriptionInfo">Description: {petDescription}</h3>
+                        <h3 className="petDescriptionInfo">
+                            Description: {petDescription}
+                        </h3>
                     </div>
                     <button className="adoptionInqBtn">
                         Inquire of Adoption

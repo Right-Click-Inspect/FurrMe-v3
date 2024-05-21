@@ -147,11 +147,29 @@
     resize: none;
 }
 
+.adoptionVerificationContainer .adoptionVerification .inputContainer .respBox {
+    height: 120px;
+    resize: none;
+    font-size: 14px;
+}
+
+.adoptionVerificationContainer .adoptionVerification .inputContainer .charCount {
+    font-size: 10px;
+    margin-top: -7px;
+    margin-bottom: 12px;
+}
+
+.adoptionVerificationContainer .adoptionVerification .inputContainer .respDisclaimer {
+    font-size: 12px;
+    color: rgb(141, 141, 141);
+    text-align: center;
+}
+
 .TAC-header {
     margin-top: 20px;
     border: none;
     background-color: rgb(233, 233, 233);
-    width: 70%;
+    width: 100%;
     padding: 8px 20px;
     border-radius: 7px;
     font-size: 15px;
@@ -165,19 +183,44 @@
     transform: scale(1.01);
 }
 
-.termsAndConditions {
-    position: relative;
+.adoptionVerification .TAC-container {
     width: 70%;
+    position: relative;
 }
 
-.TAC-list {
-    margin-top: 5px;
-    width: 100%;
-    background-color: rgb(233, 233, 233);
-    border-radius: 7px;
+.termsAndConditions {
     padding: 20px;
-    font-size: 15px;
-    display: none;
+    width: 100%;
+    border: 1px solid rgb(233, 233, 233);
+    border-radius: 7px;
+    background-color: rgb(240, 240, 240);
+}
+
+.termsAndConditions .commitmentHeader {
+    margin: 15px 0;
+}
+
+.termsAndConditions h4 {
+    margin-top: 15px;
+}
+
+.termsAndConditions p {
+    font-size: 13px;
+}
+
+.adoptionVerification .termsAndConditions .privacyHeader {
+    margin-top: 40px;
+}
+
+.adoptionVerification .termsAndConditions .TAC-title, .commitmentHeader, .privacyHeader {
+    text-align: center;
+}
+
+.adoptionVerification .verTAC {
+    font-size: 11px;
+    width: 70%;
+    margin-top: 30px;
+    margin-bottom: -15px;
 }
 
 .adoptionVerification .submitBtn {

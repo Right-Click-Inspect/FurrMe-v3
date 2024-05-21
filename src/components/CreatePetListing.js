@@ -9,20 +9,31 @@ import { IoCloseCircleOutline } from "react-icons/io5";
 
 function CreatePetListing() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [genderDropdownOpen, setGenderDropdownOpen] = useState(false);
     const [selectedPetType, setSelectedPetType] = useState("Select Pet Type");
+    const [selectedPetGender, setSelectedPetGender] = useState("Select Gender");
     const [fileNames, setFileNames] = useState([]);
     const [petBehavior, setPetBehavior] = useState("");
     const [petHealth, setPetHealth] = useState("");
     const [petDescription, setPetDescription] = useState("");
     const dropdownRef = useRef(null);
+    const genderDropdownRef = useRef(null);
     const fileInputRef = useRef(null);
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     };
 
+    const toggleGenderDropdown = () => {
+        setGenderDropdownOpen(!genderDropdownOpen);
+    };
+
     const closeDropdown = () => {
         setDropdownOpen(false);
+    };
+
+    const closeGenderDropdown = () => {
+        setGenderDropdownOpen(false);
     };
 
     const handleClickOutside = (event) => {
@@ -31,6 +42,12 @@ function CreatePetListing() {
             !dropdownRef.current.contains(event.target)
         ) {
             closeDropdown();
+        }
+        if (
+            genderDropdownRef.current &&
+            !genderDropdownRef.current.contains(event.target)
+        ) {
+            closeGenderDropdown();
         }
     };
 
@@ -66,6 +83,11 @@ function CreatePetListing() {
         closeDropdown();
     };
 
+    const handleSelectPetGender = (gender) => {
+        setSelectedPetGender(gender);
+        closeGenderDropdown();
+    };
+
     const handleCharacterLimit = (event, setter, maxChars) => {
         if (event.target.value.length > maxChars) {
             event.target.value = event.target.value.slice(0, maxChars);
@@ -82,9 +104,49 @@ function CreatePetListing() {
                 <div className="inputsContainer">
                     <h2>Add New Pet Listing</h2>
                     <div className="basicInfo">
-                        <div className="petNameContainer">
-                            <label htmlFor="petName">Name</label>
-                            <input type="text" />
+                        <div className="nameGenderContainer">
+                            <div className="inputs petNamePrev">
+                                <label htmlFor="petName">Name</label>
+                                <input type="text" />
+                            </div>
+                            <div
+                                className="inputs petGender"
+                                ref={genderDropdownRef}
+                            >
+                                <label htmlFor="petGender">Gender</label>
+                                <p
+                                    className="petGenderHeader"
+                                    onClick={toggleGenderDropdown}
+                                >
+                                    {selectedPetGender}
+                                    {genderDropdownOpen ? (
+                                        <MdOutlineKeyboardArrowUp />
+                                    ) : (
+                                        <MdOutlineKeyboardArrowDown />
+                                    )}
+                                </p>
+                                {genderDropdownOpen && (
+                                    <ul
+                                        className="petGenderDropdown"
+                                        onClick={(e) => e.stopPropagation()}
+                                    >
+                                        <li
+                                            onClick={() =>
+                                                handleSelectPetGender("Male")
+                                            }
+                                        >
+                                            Male
+                                        </li>
+                                        <li
+                                            onClick={() =>
+                                                handleSelectPetGender("Female")
+                                            }
+                                        >
+                                            Female
+                                        </li>
+                                    </ul>
+                                )}
+                            </div>
                         </div>
                         <div className="containers">
                             <div className="inputs type" ref={dropdownRef}>
