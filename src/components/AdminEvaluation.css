@@ -33,7 +33,7 @@
 
 .adminEvaluation .mainContent {
     flex: 1;
-    padding: 0 5%;
+    padding: 0 10%;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
@@ -138,6 +138,7 @@
 .adminEvaluation .infoDropdownsContainer .dropdown {
     width: 100%;
     padding: 10px 0;
+    margin: 15px 0;
 }
 
 .adminEvaluation .infoDropdownsContainer .dropdown p {
@@ -148,10 +149,12 @@
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
+    background-color: var(--primaryTextColor);
+    color: white;
 }
 
 .adminEvaluation .infoDropdownsContainer .dropdown p:hover {
-    background-color: rgb(218, 218, 218);
+    background-color: rgb(87, 86, 86);
 }
 
 .adminEvaluation .infoDropdownsContainer .dpCont {
@@ -233,10 +236,12 @@
 
 .adminEvaluation .mainContent .evalResultCont .evalSubmitButton {
     width: 100%;
+    background-color: var(--primaryTextColor);
+    color: white;
 }
 
 .adminEvaluation .mainContent .evalResultCont button:hover {
-    background-color: rgb(218, 218, 218);
+    background-color: rgb(100, 100, 100);
 }
 
 .adminEvaluation .mainContent .evalResultCont .rejectReasonCont {
