@@ -22,6 +22,7 @@ import AdminDashboardSidebar from "./components/AdminDashboardSidebar";
 import AdminAdoptionRequests from "./components/AdminAdoptionRequests";
 import CreatePetListing from "./components/CreatePetListing";
 import AdminEvaluation from "./components/AdminEvaluation";
+import AdminPetPreview from "./components/AdminPetPreview";
 
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -29,7 +30,7 @@ function App() {
     return (
         <div className="App">
             <Router>
-                <AdminEvaluation />
+                <AdminPetPreview />
             </Router>
         </div>
     );
